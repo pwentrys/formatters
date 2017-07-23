@@ -1,3 +1,4 @@
+from config.blacklist import allowed
 from autopep8 import fix_code
 from os.path import splitext
 from pathlib import Path
@@ -47,9 +48,9 @@ class Pep8:
         :param string:
         :return:
         """
-        path = Path(string)
-        if path.is_file():
-            if splitext(string)[1] == '.csv':
-                Pep8._on_file(path)
-        elif path.is_dir():
-            Pep8._on_dir(path)
+        if allowed(string):
+            path = Path(string)
+            if path.is_file() and splitext(string)[1] == '.py':
+                    Pep8._on_file(path)
+            elif path.is_dir():
+                Pep8._on_dir(path)

@@ -1,3 +1,4 @@
+from config.blacklist import allowed
 import tabnanny
 from pathlib import Path
 
@@ -10,6 +11,7 @@ class Tabber:
         :param string:
         :return:
         """
-        path = Path(string)
-        if path.exists():
-            tabnanny.check(path)
+        if allowed(string):
+            path = Path(string)
+            if path.exists():
+                tabnanny.check(path)
