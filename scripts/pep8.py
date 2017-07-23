@@ -14,7 +14,8 @@ class Pep8:
     }
 
     @staticmethod
-    async def _on_file_async(path):
+    @asyncio.coroutine
+    def _on_file_async(path):
         """
         Run pep8 on file.
         :param path:
@@ -31,7 +32,6 @@ class Pep8:
                 formatted,
                 encoding=Pep8.ENCODING
             )
-        await asyncio.sleep(0.0000000000000000001)
 
     @staticmethod
     def _on_file(path):
