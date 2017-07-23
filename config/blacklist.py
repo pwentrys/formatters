@@ -1,4 +1,4 @@
-BEGINS = ['.git', '.idea']
+BEGINS = ['.git', '.idea', '.vs']
 CONTAINS = ['__pycache__']
 ENDS = ['routes.py']
 

@@ -1,6 +1,6 @@
 from config.blacklist import allowed
 from autopep8 import fix_code
-from os.path import splitext
+from os.path import basename, splitext
 from pathlib import Path
 
 
@@ -38,8 +38,10 @@ class Pep8:
         :param path:
         :return:
         """
-        for file in path.iterdir():
-            Pep8.run(str(file))
+        if allowed(basename(path)):
+            print(f'Dir: {path}')
+            for file in path.iterdir():
+                Pep8.run(str(file))
 
     @staticmethod
     def run(string: str):
