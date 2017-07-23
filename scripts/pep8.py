@@ -51,6 +51,6 @@ class Pep8:
         if allowed(string):
             path = Path(string)
             if path.is_file() and splitext(string)[1] == '.py':
-                    Pep8._on_file(path)
+                Pep8._on_file(path)
             elif path.is_dir():
                 Pep8._on_dir(path)
